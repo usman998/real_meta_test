@@ -30,11 +30,12 @@ class MyHomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextHeader(
-                    mainText: "Login",textSize: 25,
+                    mainText: "Login",textSize: 45,
                   ),
                   TextHeader(
-                    mainText: "Please Sign in to Continue",textSize: 15,textColo: Colors.black38,
+                    mainText: "Please Sign in to Continue",textSize: 25,textColo: Colors.black38,
                   ),
+                  SizedBox(height: 30,),
                   TextFormWidget(
                     mainText: "Email",
                     icon: Icons.email,
@@ -43,22 +44,22 @@ class MyHomePage extends StatelessWidget {
                   TextFormWidget(
                     mainText: "Password",
                     obsecure: true,
-                    icon: Icons.password,
+                    icon: Icons.lock,
                     controller: productController.passwordController,
                   ),
                   Container(
                     width: double.infinity,
                     alignment: Alignment.centerRight,
-                    padding: EdgeInsets.only(right: 20,top: 20),
+                    padding: EdgeInsets.only(right: 30,top: 20),
                     child: GestureDetector(
                       onTap: (){
                         productController.login();
                       },
                       child: Container(
-                        width: 120,
-                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                        width: 130,
+                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
                             gradient: LinearGradient(
                               colors: [Colors.yellow, Color(0xffffbf00)],
                               begin: Alignment.centerLeft,
@@ -91,11 +92,21 @@ class MyHomePage extends StatelessWidget {
               onTap: (){
                 Get.to(RegisterScreen());
               },
-              child: TextHeader(
-                mainText: "Don't have an account Sign in",textSize: 15,
-                alignment: Alignment.center,bottomPad: 50,
+              child: RichText(
+                text: TextSpan(
+                  text: "Don't have an account  ",
+                  style: TextStyle(
+                      fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black
+                  ),
+                  children: const <TextSpan>[
+                    TextSpan(text: 'Sign Up', style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,color: Color(0xffffbf00))),
+                  ],
+                ),
               ),
             ),
+            SizedBox(height: 30,)
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

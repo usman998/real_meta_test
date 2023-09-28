@@ -24,17 +24,31 @@ class RegisterController extends GetxController{
 
 
   Future addNote() async {
-    if (!GetUtils.isEmail(emailController.text)){
+    if(titleController.text.isEmpty||emailController.text.isEmpty||passwordController.text.isEmpty||confirmPasswordController.text.isEmpty){
+      Get.snackbar(
+          "Invalid Details", "Please add all the details",
+          snackPosition:SnackPosition.BOTTOM
+      );
+    } else if (!GetUtils.isEmail(emailController.text)){
       emailController.clear();
-      return "Email is Not Valid";
+      Get.snackbar(
+          "Invalid Email", "please write correct email",
+          snackPosition:SnackPosition.BOTTOM
+      );
     }else if(passwordController.text.length<8){
       passwordController.clear();
       confirmPasswordController.clear();
-      return "Password cannot be less than 8 characters";
+      Get.snackbar(
+          "Invalid Password", "Password must have 8 characters",
+          snackPosition:SnackPosition.BOTTOM
+      );
     } else if(passwordController.text != confirmPasswordController.text){
       passwordController.clear();
       confirmPasswordController.clear();
-      return "Password does not match";
+      Get.snackbar(
+          "Invalid Password", "Please Re-enter your Password",
+          snackPosition:SnackPosition.BOTTOM
+      );
     } else{
       final note = Note(
         title: titleController.text,

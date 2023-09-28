@@ -28,11 +28,11 @@ class RegisterScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextHeader(
-                    mainText: "Create Account",textSize: 35,bottomPad: 30,
+                    mainText: "Create Account",textSize: 40,bottomPad: 30,
                   ),
                   TextFormWidget(
                     mainText: "Name",
-                    icon: Icons.email,
+                    icon: Icons.person,
                     controller: productController.titleController,
                   ),
                   TextFormWidget(
@@ -43,13 +43,13 @@ class RegisterScreen extends StatelessWidget {
                   TextFormWidget(
                     mainText: "Password",
                     obsecure: true,
-                    icon: Icons.email,
+                    icon: Icons.lock,
                     controller: productController.passwordController,
                   ),
                   TextFormWidget(
                     obsecure: true,
                     mainText: "Confirm Password",
-                    icon: Icons.password,
+                    icon: Icons.lock,
                     controller: productController.confirmPasswordController,
                   ),
                   Container(
@@ -62,9 +62,9 @@ class RegisterScreen extends StatelessWidget {
                       },
                       child: Container(
                         width: 140,
-                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                         decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: BorderRadius.all(Radius.circular(35)),
                             gradient: LinearGradient(
                               colors: [Colors.yellow, Color(0xffffbf00)],
                               begin: Alignment.centerLeft,
@@ -97,11 +97,21 @@ class RegisterScreen extends StatelessWidget {
               onTap: (){
                 Get.to(MyHomePage());
               },
-              child: const TextHeader(
-                mainText: "Don't have an account Sign in",textSize: 15,
-                alignment: Alignment.center,bottomPad: 50,
+              child: RichText(
+                text: TextSpan(
+                  text: "Already have an account  ",
+                  style: TextStyle(
+                    fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black
+                  ),
+                  children: const <TextSpan>[
+                    TextSpan(text: 'Sign In', style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,color: Color(0xffffbf00))),
+                  ],
+                ),
               ),
             ),
+            SizedBox(height: 30,)
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
