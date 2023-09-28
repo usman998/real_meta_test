@@ -1,6 +1,6 @@
 
 
-import 'dart:developer';
+
 
 import 'package:get/get.dart';
 import 'package:realmeta_test/model/response_model.dart';
@@ -19,6 +19,7 @@ class SingleProductController extends GetxController{
 
 
   getAllResult(String id)async {
+    isLoaded.value = false;
     result  = await globalSearchService(id);
     if(result!=null){
       isLoaded.value = true;
@@ -28,14 +29,10 @@ class SingleProductController extends GetxController{
 
   Future<dynamic> globalSearchService(String id) async {
 
-    List<dynamic> tempList = [];
-
     ResponseModel responseModel = await _httpRequestClient.getRequestWithOutHeader(
       url: "https://fakestoreapi.com/products/$id",
     );
     if(responseModel.statusCode>=200 && responseModel.statusCode<=230){
-      log("this is resposne====> ${responseModel.data}");
-
       return responseModel.data;
     }else{
       return null;

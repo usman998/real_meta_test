@@ -3,6 +3,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:realmeta_test/component/bottom_text_cont.dart';
+import 'package:realmeta_test/component/rounded_btn.dart';
 import 'package:realmeta_test/component/text_form_widget.dart';
 import 'package:realmeta_test/component/text_header.dart';
 import 'package:get/get.dart';
@@ -55,66 +57,28 @@ class RegisterScreen extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     alignment: Alignment.centerRight,
-                    padding: EdgeInsets.only(right: 20,top: 20),
-                    child: GestureDetector(
+                    padding: const EdgeInsets.only(right: 30,top: 20),
+                    child: RoundedButton(
                       onTap: (){
                         productController.addNote();
-                      },
-                      child: Container(
-                        width: 140,
-                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(35)),
-                            gradient: LinearGradient(
-                              colors: [Colors.yellow, Color(0xffffbf00)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            )
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "SignUp",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Icon(Icons.arrow_forward,color: Colors.white,)
-                          ],
-                        ),
-                      ),
+                      },text: "SignUp",
                     ),
+                  ),
 
-                  )
                 ],
               ),
             ),
-            GestureDetector(
+            BottomTextCont(
               onTap: (){
                 Get.to(MyHomePage());
               },
-              child: RichText(
-                text: TextSpan(
-                  text: "Already have an account  ",
-                  style: TextStyle(
-                    fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black
-                  ),
-                  children: const <TextSpan>[
-                    TextSpan(text: 'Sign In', style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,color: Color(0xffffbf00))),
-                  ],
-                ),
-              ),
+              firstText: "Already have an account  ", secondText: 'Sign In',
             ),
-            SizedBox(height: 30,)
+            const SizedBox(height: 30,)
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
