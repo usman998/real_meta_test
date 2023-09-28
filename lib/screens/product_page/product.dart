@@ -28,7 +28,7 @@ class ProductPage extends StatelessWidget {
       ):
       Column(
         children: [
-          SizedBox(height:30,),
+          SizedBox(height:60,),
           Container(
             // height: 90,
             padding: EdgeInsets.symmetric(horizontal: 15),

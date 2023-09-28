@@ -31,7 +31,7 @@ class ProductList extends StatelessWidget {
             SizedBox(height: 70,),
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 0),
+              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

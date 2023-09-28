@@ -21,7 +21,7 @@ class TextFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0,right: 10,bottom: 10,top: 10),
+      padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 10,top: 10),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
