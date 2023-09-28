@@ -7,7 +7,9 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:realmeta_test/component/text_form_widget.dart';
 import 'package:realmeta_test/screens/Dashboard_screen/controller/product_controller.dart';
+import 'package:realmeta_test/screens/login_screen/login.dart';
 import 'package:realmeta_test/screens/product_page/product.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ProductList extends StatelessWidget {
    ProductList({super.key});
@@ -200,12 +202,12 @@ class ProductList extends StatelessWidget {
                   children: [
                     Center(child:
                     IconButton(onPressed:(){
-                    }, icon: Icon(Icons.chat) )
+                    }, icon: Icon(Icons.person) )
                     ),
 
                     Center(
                       child: Text(
-                        'Chat',
+                        'Profile',
                         style: TextStyle(color:Colors.black),),
                     )
                   ],),
@@ -218,12 +220,14 @@ class ProductList extends StatelessWidget {
                   children: [
                     Center(child:
                     IconButton(onPressed:(){
-                    }, icon: Icon(Icons.chat) )
+                      GetStorage().remove("userInfo");
+                      Get.offAll(MyHomePage());
+                    }, icon: Icon(Icons.logout) )
                     ),
 
                     Center(
                       child: Text(
-                        'Profile',
+                        'LogOut',
                         style: TextStyle(color:Colors.black),),
                     )
                   ],),

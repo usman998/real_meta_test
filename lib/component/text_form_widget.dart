@@ -9,18 +9,21 @@ class TextFormWidget extends StatelessWidget {
     super.key,
     required this.controller,
     required this.mainText,
-    required this.icon
+    required this.icon,
+    this.obsecure =false,
   });
 
   final TextEditingController? controller ;
   final String mainText;
   final IconData icon;
+  final bool obsecure;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0,right: 10,bottom: 10,top: 10),
       child: TextField(
+        obscureText: obsecure,
           style: TextStyle(
             fontSize: 25.0,
             color: Colors.blueAccent,

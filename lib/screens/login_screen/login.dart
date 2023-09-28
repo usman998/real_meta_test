@@ -3,20 +3,18 @@ import 'package:realmeta_test/component/text_form_widget.dart';
 import 'package:realmeta_test/component/text_header.dart';
 import 'package:get/get.dart';
 import 'package:realmeta_test/screens/Dashboard_screen/product_dashboad.dart';
+import 'package:realmeta_test/screens/login_screen/controller/login_controller.dart';
 import 'package:realmeta_test/screens/register_screen/register.dart';
 
 
 
 
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
 
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
+  final LoginController productController = Get.put(LoginController());
 
 
   @override
@@ -40,12 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormWidget(
                     mainText: "Email",
                     icon: Icons.email,
-                    controller: TextEditingController(),
+                    controller: productController.emailController,
                   ),
                   TextFormWidget(
                     mainText: "Password",
+                    obsecure: true,
                     icon: Icons.password,
-                    controller: TextEditingController(),
+                    controller: productController.passwordController,
                   ),
                   Container(
                     width: double.infinity,
@@ -53,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.only(right: 20,top: 20),
                     child: GestureDetector(
                       onTap: (){
-                        Get.to(ProductList());
+                        productController.login();
                       },
                       child: Container(
                         width: 120,

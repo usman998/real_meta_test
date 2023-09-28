@@ -6,11 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:realmeta_test/component/text_form_widget.dart';
 import 'package:realmeta_test/component/text_header.dart';
 import 'package:get/get.dart';
-import 'package:realmeta_test/main.dart';
 import 'package:realmeta_test/screens/login_screen/login.dart';
 
+import 'controller/register_controller.dart';
+
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
+
+  final RegisterController productController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,52 +33,59 @@ class RegisterScreen extends StatelessWidget {
                   TextFormWidget(
                     mainText: "Name",
                     icon: Icons.email,
-                    controller: TextEditingController(),
+                    controller: productController.titleController,
                   ),
                   TextFormWidget(
                     mainText: "Email",
                     icon: Icons.email,
-                    controller: TextEditingController(),
+                    controller: productController.emailController,
                   ),
                   TextFormWidget(
                     mainText: "Password",
+                    obsecure: true,
                     icon: Icons.email,
-                    controller: TextEditingController(),
+                    controller: productController.passwordController,
                   ),
                   TextFormWidget(
+                    obsecure: true,
                     mainText: "Confirm Password",
                     icon: Icons.password,
-                    controller: TextEditingController(),
+                    controller: productController.confirmPasswordController,
                   ),
                   Container(
                     width: double.infinity,
                     alignment: Alignment.centerRight,
                     padding: EdgeInsets.only(right: 20,top: 20),
-                    child: Container(
-                      width: 140,
-                      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          gradient: LinearGradient(
-                            colors: [Colors.yellow, Color(0xffffbf00)],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          )
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "SignUp",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
+                    child: GestureDetector(
+                      onTap: (){
+                        productController.addNote();
+                      },
+                      child: Container(
+                        width: 140,
+                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            gradient: LinearGradient(
+                              colors: [Colors.yellow, Color(0xffffbf00)],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                            )
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "SignUp",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                          Icon(Icons.arrow_forward,color: Colors.white,)
-                        ],
+                            Icon(Icons.arrow_forward,color: Colors.white,)
+                          ],
+                        ),
                       ),
                     ),
 
@@ -87,7 +97,7 @@ class RegisterScreen extends StatelessWidget {
               onTap: (){
                 Get.to(MyHomePage());
               },
-              child: TextHeader(
+              child: const TextHeader(
                 mainText: "Don't have an account Sign in",textSize: 15,
                 alignment: Alignment.center,bottomPad: 50,
               ),

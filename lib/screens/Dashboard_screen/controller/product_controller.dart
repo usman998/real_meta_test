@@ -43,7 +43,6 @@ class ProductController extends GetxController {
       url: "https://fakestoreapi.com/products",
     );
     if(responseModel.statusCode>=200 && responseModel.statusCode<=230){
-      log("this is resposne====> ${responseModel.data}");
       if(responseModel.data is List){
         for(var item in responseModel.data){
           tempList.add(item);

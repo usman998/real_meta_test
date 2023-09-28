@@ -48,6 +48,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   get: ^4.6.1
   http: ^1.1.0
+  sqflite: ^2.3.0
+  sqflite_common_ffi:
+  get_storage:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
